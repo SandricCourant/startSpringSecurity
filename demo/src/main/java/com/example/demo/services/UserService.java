@@ -19,7 +19,7 @@ public class UserService {
     public User create(User user){
 
         try {
-            return userRepository.save(user);
+            return user.isCguSigned() ? userRepository.save(user) : null;
         }catch(Exception e){
             System.err.println(e.getMessage());
             return null;
