@@ -4,20 +4,18 @@ import com.example.demo.controllers.dto.UserDto;
 import com.example.demo.services.UserService;
 import com.example.demo.services.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
+@CrossOrigin(origins = {"${app.security.cors.origin}"})
 @RestController
 @RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<Iterable<UserDto>> getAll(){
 
         Iterable<User> users = userService.getAll();
@@ -36,7 +34,7 @@ public class UserController {
 
         return ResponseEntity.status(200).body(userDto);
     }
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<UserDto> create(@RequestBody UserDto requestDto){
         User user = userService.create(requestDto.toUser());
         if(user == null) return ResponseEntity.status(409).body(null);
