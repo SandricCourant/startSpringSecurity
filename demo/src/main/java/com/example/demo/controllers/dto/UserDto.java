@@ -26,8 +26,10 @@ public class UserDto {
     private String phoneNumber = null;
     @Builder.Default()
     private boolean cguSigned = false;
+    @Builder.Default()
+    private String csrfToken = null;
 
     public User toUser(){
-        return new User(this.id, this.lastname, this.firstname, this.email, this.password, this.phoneNumber, false, false, this.cguSigned);
+        return new User(this.id, this.lastname, this.firstname, this.email, this.password, this.phoneNumber, false, false, this.cguSigned, this.csrfToken);
     }
 }

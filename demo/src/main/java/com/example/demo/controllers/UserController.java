@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
 import com.example.demo.controllers.dto.UserDto;
+import com.example.demo.controllers.feigns.AsgardeoFeignClient;
+import com.example.demo.services.AuthentificationService;
 import com.example.demo.services.UserService;
 import com.example.demo.services.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
-@CrossOrigin(origins = {"${app.security.cors.origin}"})
+//@CrossOrigin(origins = {"${app.security.cors.origin}"})
 @RestController
 @RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private AsgardeoFeignClient asgardeoFeignClient;
     @GetMapping("")
     public ResponseEntity<Iterable<UserDto>> getAll(){
 
@@ -54,4 +58,5 @@ public class UserController {
     public boolean delete(@PathVariable int id){
         return userService.delete(id);
     }
+
 }

@@ -3,6 +3,7 @@ package com.example.demo.services.models;
 import com.example.demo.controllers.dto.UserDto;
 import jakarta.persistence.*;
 import lombok.*;
+import org.apache.el.parser.Token;
 
 @Entity
 @AllArgsConstructor
@@ -34,8 +35,10 @@ public class User {
     private boolean phoneNumberValidated = false;
     @Builder.Default()
     private boolean cguSigned = false;
+    @Builder.Default()
+    private String csrfToken = null;
 
     public UserDto toUserDto(){
-        return new UserDto(this.id, this.lastname, this.firstname, this.email, this.password, this.phoneNumber, this.cguSigned);
+        return new UserDto(this.id, this.lastname, this.firstname, this.email, this.password, this.phoneNumber, this.cguSigned, this.csrfToken);
     }
 }
