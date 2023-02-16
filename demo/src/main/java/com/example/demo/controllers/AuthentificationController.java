@@ -1,8 +1,8 @@
 package com.example.demo.controllers;
 
-import com.example.demo.controllers.dto.AsgardeoResponse;
 import com.example.demo.controllers.dto.UserDto;
 import com.example.demo.controllers.feigns.AsgardeoFeignClient;
+import com.example.demo.controllers.feigns.AsgardeoResponse;
 import com.example.demo.services.AuthentificationService;
 import com.example.demo.services.UserService;
 import com.example.demo.services.models.User;
@@ -16,7 +16,6 @@ public class AuthentificationController {
     private UserService userService;
     @Autowired
     private AuthentificationService authentificationService;
-
     @Autowired
     private AsgardeoFeignClient asgardeoFeignClient;
     @Value("${authentification.clientId}")
