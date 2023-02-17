@@ -3,11 +3,13 @@ package com.example.demo.controllers;
 import com.example.demo.controllers.dto.UserDto;
 import com.example.demo.controllers.feigns.AsgardeoFeignClient;
 import com.example.demo.controllers.feigns.models.AsgardeoResponse;
+import com.example.demo.controllers.feigns.models.userReponse.AsgardeoUserResponse;
 import com.example.demo.services.AuthentificationService;
 import com.example.demo.services.UserService;
 import com.example.demo.services.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 @RestController
@@ -35,6 +37,11 @@ public class AuthentificationController {
         AsgardeoResponse asgardeoResponse = asgardeoFeignClient.getTokenFromCode("authorization_code", clientId, code, redirectUri);
         String result = asgardeoResponse.getAccess_token();
         return ResponseEntity.status(200).body(result);
+    }
+    @GetMapping("/asgardeo/users/{token}")
+    public ResponseEntity<AsgardeoUserResponse> getAllUsers(@PathVariable String token) {
+        System.out.println(token);
+        return ResponseEntity.status(HttpStatus.OK).body(asgardeoFeignClient.getUsers(token));
     }
     @PostMapping("/register")
     public ResponseEntity<UserDto> create(@RequestBody UserDto requestDto){
