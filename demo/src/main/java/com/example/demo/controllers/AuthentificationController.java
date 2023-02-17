@@ -2,7 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.controllers.dto.UserDto;
 import com.example.demo.controllers.feigns.AsgardeoFeignClient;
-import com.example.demo.controllers.feigns.AsgardeoResponse;
+import com.example.demo.controllers.feigns.models.AsgardeoResponse;
 import com.example.demo.services.AuthentificationService;
 import com.example.demo.services.UserService;
 import com.example.demo.services.models.User;
