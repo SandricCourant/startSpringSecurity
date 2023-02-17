@@ -12,5 +12,8 @@ import lombok.Setter;
 public class Meta {
 
 	private String created;
+	private String location;
+	private String lastModified;
+	private String resourceType;
 
 }

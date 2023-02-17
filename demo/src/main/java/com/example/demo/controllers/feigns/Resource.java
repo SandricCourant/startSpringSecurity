@@ -16,10 +16,13 @@ public class Resource {
 
 	private Meta meta;
 	private Schema schemas;
+	private String username;
+	private String id;
+	private Name name;
 	
 	private ArrayList<Email> emails;
 	
-	@JsonProperty("urn:ietf:params:scim:schemas:extension:enterprise:2.0User")
+	@JsonProperty("urn:ietf:params:scim:schemas:extension:enterprise:2.0:User")
 	private UserParam userParam;
 	
 	private Role roles;
