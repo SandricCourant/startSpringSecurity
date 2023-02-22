@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.controllers.dto.UserDto;
 import com.example.demo.controllers.feigns.AsgardeoFeignClient;
 import com.example.demo.controllers.feigns.models.AsgardeoResponse;
+import com.example.demo.controllers.feigns.models.groupResponse.AsgardeoGroupResponse;
 import com.example.demo.controllers.feigns.models.userReponse.AsgardeoUserResponse;
 import com.example.demo.services.AuthentificationService;
 import com.example.demo.services.UserService;
@@ -43,6 +44,12 @@ public class AuthentificationController {
         System.out.println(token);
         return ResponseEntity.status(HttpStatus.OK).body(asgardeoFeignClient.getUsers(token));
     }
+    @GetMapping("/asgardeo/groups/{Token}")
+    public ResponseEntity<AsgardeoGroupResponse> getAllGroups(@PathVariable String Token) {
+        System.out.println(Token);
+        return ResponseEntity.status(HttpStatus.OK).body(asgardeoFeignClient.getGroups(Token));
+    }
+
     @PostMapping("/register")
     public ResponseEntity<UserDto> create(@RequestBody UserDto requestDto){
 

@@ -1,6 +1,7 @@
 package com.example.demo.controllers.feigns;
 
 import com.example.demo.controllers.feigns.models.AsgardeoResponse;
+import com.example.demo.controllers.feigns.models.groupResponse.AsgardeoGroupResponse;
 import com.example.demo.controllers.feigns.models.userReponse.AsgardeoUserResponse;
 
 import org.springframework.cloud.openfeign.FeignClient;
@@ -16,9 +17,11 @@ public interface AsgardeoFeignClient {
 	public AsgardeoResponse getTokenFromCode(@RequestParam String grant_type, @RequestParam String client_id,
 											 @RequestParam String code, @RequestParam String redirect_uri);
 
-	@GetMapping("scim2/Users")
+	@GetMapping("/scim2/Users")
 	public AsgardeoUserResponse getUsers(@RequestHeader String token);
-	
+
+	@GetMapping("/scim2/Groups")
+	public AsgardeoGroupResponse getGroups(@RequestHeader String Token);
 }
 
 
