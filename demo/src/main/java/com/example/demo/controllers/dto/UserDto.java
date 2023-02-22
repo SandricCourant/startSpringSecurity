@@ -11,6 +11,7 @@ import lombok.*;
 @Getter
 @Builder(toBuilder = true)
 public class UserDto {
+    //PAS DE JPA DANS UN DTO ! (PERSISTENCE DES DONNEES)
     @Id
     @GeneratedValue
     private int id;
@@ -28,7 +29,7 @@ public class UserDto {
     private boolean cguSigned = false;
     @Builder.Default()
     private String csrfToken = null;
-
+//ATTENTION! A mettre dans un UserFactory en static !
     public User toUser(){
         return new User(this.id, this.lastname, this.firstname, this.email, this.password, this.phoneNumber, false, false, this.cguSigned, this.csrfToken);
     }
